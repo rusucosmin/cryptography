@@ -14,13 +14,13 @@
   <%= label_tag("Encryption key") %>
   <br>
   <%= label_tag("alpha = ") %>
-  <%= text_field_tag("alpha") %>
+  <%= text_field_tag("alpha", value = 1) %>
   <br>
   <%= label_tag("beta = ") %>
-  <%= text_field_tag("beta") %>
+  <%= text_field_tag("beta", value = 1) %>
   <br>
   <%= label_tag("Text to encrypt") %>
-  <%= text_field_tag("text") %>
+  <%= text_field_tag("text", value = "text to encrypt") %>
   <%= submit_tag("Encrypt") %>
 <% end %>
 
@@ -34,12 +34,12 @@
   <%= label_tag("Encryption key") %>
   <br>
   <%= label_tag("alpha = ") %>
-  <%= text_field_tag("alpha") %>
+  <%= text_field_tag("alpha", value = 1) %>
   <br>
   <%= label_tag("beta = ") %>
-  <%= text_field_tag("beta") %>
+  <%= text_field_tag("beta", value = 1) %>
   <br>
   <%= label_tag("Text to decrypt") %>
-  <%= text_field_tag("ciphertext") %>
+  <%= text_field_tag("ciphertext", value = "text to decrypt") %>
   <%= submit_tag("Decrypt") %>
 <% end %>
