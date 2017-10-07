@@ -2,14 +2,44 @@
 
 <h3> Lab 1 </h3>
 
+<h4>Affine ciffer</h4>
 
 <%= form_tag("/encrypt", method: "post") do %>
-  <% Array(1..26).each do |idx| %>
+  <% Array(0..25).each do |idx| %>
     <%= label_tag(idx) %>
-    <%= text_field_tag(idx, (idx + 'a'[0].ord - 1).chr) %>
-    <br>
+    <%= text_field_tag(idx, (idx + 'a'[0].ord).chr) %>
   <% end %>
+  <%= hidden_field_tag(26, ' ')  %>
+  <br>
+  <%= label_tag("Encryption key") %>
+  <br>
+  <%= label_tag("alpha = ") %>
+  <%= text_field_tag("alpha") %>
+  <br>
+  <%= label_tag("beta = ") %>
+  <%= text_field_tag("beta") %>
+  <br>
   <%= label_tag("Text to encrypt") %>
   <%= text_field_tag("text") %>
   <%= submit_tag("Encrypt") %>
+<% end %>
+
+<%= form_tag("/decrypt", method: "post") do %>
+  <% Array(0..25).each do |idx| %>
+    <%= label_tag(idx) %>
+    <%= text_field_tag(idx, (idx + 'a'[0].ord).chr) %>
+  <%= hidden_field_tag(26, ' ')  %>
+  <% end %>
+  <br>
+  <%= label_tag("Encryption key") %>
+  <br>
+  <%= label_tag("alpha = ") %>
+  <%= text_field_tag("alpha") %>
+  <br>
+  <%= label_tag("beta = ") %>
+  <%= text_field_tag("beta") %>
+  <br>
+  <%= label_tag("Text to decrypt") %>
+  <%= text_field_tag("ciphertext") %>
+  <%= submit_tag("Decrypt") %>
 <% end %>
