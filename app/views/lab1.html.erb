@@ -1,0 +1,15 @@
+<h2>PUBLIC KEY CRYPTOGRAPHY</h2>
+
+<h3> Lab 1 </h3>
+
+
+<%= form_tag("/encrypt", method: "post") do %>
+  <% Array(1..26).each do |idx| %>
+    <%= label_tag(idx) %>
+    <%= text_field_tag(idx, (idx + 'a'[0].ord - 1).chr) %>
+    <br>
+  <% end %>
+  <%= label_tag("Text to encrypt") %>
+  <%= text_field_tag("text") %>
+  <%= submit_tag("Encrypt") %>
+<% end %>
