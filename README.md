@@ -1,4 +1,7 @@
 # README
+[![Build Status](https://travis-ci.org/rusucosmin/cryptography.svg?branch=master)](https://travis-ci.org/rusucosmin/cryptography)
+
+Public Key Cryptography course assignments
 
 Ruby version: 2.5.2
 Rails version: 5.1.4
