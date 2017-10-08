@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-     <title>Cryptography | Encrypt</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all',
-                                              'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <div class="container">
-      <h1>PUBLIC KEY CRYPTOGRAPHY</h1>
-      <h2> Assignment 1 </h2>
-      <h3> Encrypted text </h3>
-      <p><code>encrypt ("<%= text %>") = "<%= encrypted %>"</code></p>
-    </div>
-  </body>
-</html>
+<% content_for(:title, "Cryptography | Assignment 1 - Encrypt") %>
+<div class="container">
+  <h1>PUBLIC KEY CRYPTOGRAPHY</h1>
+  <h2> Assignment 1 </h2>
+  <h3> Encrypted text </h3>
+  <p><code>encrypt ("<%= text %>") = "<%= encrypted %>"</code></p>
+</div>
