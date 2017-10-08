@@ -16,7 +16,8 @@
       <h3>Affine ciffer - Encrypt</h3>
       <%= form_tag("/encrypt", method: "post") do %>
         <h4> Alphabet </h4>
-        <table>
+        <div class="table-responsive">
+        <table class="table">
           <tr>
             <% Array(0..25).each do |idx| %>
             <td>
@@ -33,6 +34,7 @@
           </tr>
           <%= hidden_field_tag(26, ' ')  %>
         </table>
+        </div>
         <h4> Encryption key </h4>
         <div class="form-group row">
           <%= label_tag "alpha: ", nil, class: "col-sm-1 col-form-label" %>
