@@ -1,8 +1,18 @@
-<h2>PUBLIC KEY CRYPTOGRAPHY</h2>
-
-<h3> Lab 1 </h3>
-
-<h4> Dencrypted text </h4>
-
-<p> Dencrypted text for "<%= ciphertext %>":</p>
-<p> <%= decrypted %> </p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cryptography | Encrypt</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' u>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="container">
+    <h1>PUBLIC KEY CRYPTOGRAPHY</h1>
+    <h2> Assignment 1 </h2>
+    <h3> Decrypted text </h3>
+    <p><code>decrypt ("<%= ciphertext %>") = "<%= decrypted %>"</code></p>
+    </div>
+  </body>
+</html>

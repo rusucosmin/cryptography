@@ -1,45 +1,112 @@
-<h2>PUBLIC KEY CRYPTOGRAPHY</h2>
-
-<h3> Lab 1 </h3>
-
-<h4>Affine ciffer</h4>
-
-<%= form_tag("/encrypt", method: "post") do %>
-  <% Array(0..25).each do |idx| %>
-    <%= label_tag(idx) %>
-    <%= text_field_tag(idx, (idx + 'a'[0].ord).chr) %>
-  <% end %>
-  <%= hidden_field_tag(26, ' ')  %>
-  <br>
-  <%= label_tag("Encryption key") %>
-  <br>
-  <%= label_tag("alpha = ") %>
-  <%= text_field_tag("alpha", value = 1) %>
-  <br>
-  <%= label_tag("beta = ") %>
-  <%= text_field_tag("beta", value = 1) %>
-  <br>
-  <%= label_tag("Text to encrypt") %>
-  <%= text_field_tag("text", value = "text to encrypt") %>
-  <%= submit_tag("Encrypt") %>
-<% end %>
-
-<%= form_tag("/decrypt", method: "post") do %>
-  <% Array(0..25).each do |idx| %>
-    <%= label_tag(idx) %>
-    <%= text_field_tag(idx, (idx + 'a'[0].ord).chr) %>
-  <%= hidden_field_tag(26, ' ')  %>
-  <% end %>
-  <br>
-  <%= label_tag("Encryption key") %>
-  <br>
-  <%= label_tag("alpha = ") %>
-  <%= text_field_tag("alpha", value = 1) %>
-  <br>
-  <%= label_tag("beta = ") %>
-  <%= text_field_tag("beta", value = 1) %>
-  <br>
-  <%= label_tag("Text to decrypt") %>
-  <%= text_field_tag("ciphertext", value = "text to decrypt") %>
-  <%= submit_tag("Decrypt") %>
-<% end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cryptography | Assignment 1</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="container">
+    <h1>PUBLIC KEY CRYPTOGRAPHY</h1>
+    <h2> Assignment 1 </h2>
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item active">
+        <a class="nav-link" data-toggle="tab" href="#encrypt" role="tab">Encrypt</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#decrypt" role="tab">Decrypt</a>
+      </li>
+    </ul>
+    <!-- TODO(cosmin): add client-side validation -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="encrypt" role="tabpanel">
+        <h3>Affine ciffer - Encrypt</h3>
+        <%= form_tag("/encrypt", method: "post") do %>
+          <h4> Alphabet </h4>
+          <table>
+            <tr>
+              <% Array(0..25).each do |idx| %>
+              <td>
+                <%= label_tag(idx + 1) %>
+              </td>
+              <% end %>
+            </tr>
+            <tr>
+              <% Array(0..25).each do |idx| %>
+              <td>
+                <%= text_field_tag(idx, (idx + 'a'[0].ord).chr, size: 1, maxlength:1) %>
+              </td>
+              <% end %>
+            </tr>
+            <%= hidden_field_tag(26, ' ')  %>
+          </table>
+          <h4> Encryption key </h4>
+          <div class="form-group row">
+            <%= label_tag "alpha: ", nil, class: "col-sm-1 col-form-label" %>
+            <div class="col-sm-10">
+              <%= text_field_tag("alpha", value = 1) %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= label_tag("beta: ", nil, class: "col-sm-1 col-form-label") %>
+            <div class="col-sm-10">
+              <%= text_field_tag("beta", value = 1) %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= label_tag("Text to encrypt: ", nil, class: "col-sm-1 col-form-label") %>
+            <div class="col-sm-10">
+              <%= text_field_tag("text", value = "text to encrypt") %>
+            </div>
+          </div>
+          <%= submit_tag "Encrypt", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="decrypt" role="tabpanel">
+        <h3>Affine ciffer - Decrypt</h3>
+        <%= form_tag("/decrypt", method: "post") do %>
+          <h4> Alphabet </h4>
+          <table>
+            <tr>
+              <% Array(0..25).each do |idx| %>
+              <td>
+                <%= label_tag(idx + 1) %>
+              </td>
+              <% end %>
+            </tr>
+            <tr>
+              <% Array(0..25).each do |idx| %>
+              <td>
+                <%= text_field_tag(idx, (idx + 'a'[0].ord).chr, size: 1, maxlength:1) %>
+              </td>
+              <% end %>
+            </tr>
+            <%= hidden_field_tag(26, ' ')  %>
+          </table>
+          <h4> Encryption key </h4>
+          <div class="form-group row">
+            <%= label_tag("alpha: ", nil, class: "col-sm-1 col-form-label") %>
+            <div class="col-sm-10">
+              <%= text_field_tag("alpha", value = 1) %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= label_tag("beta: ", nil, class: "col-sm-1 col-form-label") %>
+            <div class="col-sm-10">
+              <%= text_field_tag("beta", value = 1) %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= label_tag("Text to decrypt: ", nil, class: "col-sm-1 col-form-label") %>
+            <div class="col-sm-10">
+              <%= text_field_tag("ciphertext", value = "text to decrypt") %>
+            </div>
+          </div>
+          <%= submit_tag("Decrypt", class: "btn btn-primary") %>
+        <% end %>
+      </div> <!-- tab-pane -->
+    </div> <!-- tab-content -->
+    </div> <!-- content -->
+  </body>
+</html>

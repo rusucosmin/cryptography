@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     render template: 'lab1'
   end
   def encrypt
-    # TODO(rusucosmin): add server-side validation
+    # TODO(cosmin): add server-side validation
     ord = {}
     Array(0..26).each do |x|
       ord[params[x.to_s].to_s] = x
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def decrypt
-    # TODO(rusucosmin): add server-side validation
+    # TODO(cosmin): add server-side validation
     ord = {}
     Array(0..26).each do |x|
       ord[params[x.to_s].to_s] = x
