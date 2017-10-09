@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
   def show
+    @cipher = Cipher.new()
     render template: 'lab1'
   end
 
@@ -30,7 +32,8 @@ class ApplicationController < ActionController::Base
         .map{|ide| alphabet[ide]}
         .join
     logger.info "Encrypted to " + encrypted
-    render template: 'encrypt', :locals => { :encrypted => encrypted, :text => text }
+    render json: {"encryted" =>  encrypted}
+#    render template: 'encrypt', :locals => { :encrypted => encrypted, :text => text }
   end
 
   def get_inverse(alpha, m)
@@ -62,6 +65,7 @@ class ApplicationController < ActionController::Base
         .map{|idx| alphabet[idx]}
         .join
     logger.info "Decrypted: " + decrypted.to_s
-    render template: "decrypt", :locals => { :decrypted => decrypted, :ciphertext => ciphertext }
+    render json: {"decryted" =>  decrypted}
+#    render template: "decrypt", :locals => { :decrypted => decrypted, :ciphertext => ciphertext }
   end
 end
