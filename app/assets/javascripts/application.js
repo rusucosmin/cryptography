@@ -20,6 +20,10 @@
 $(document).ready(function(){
   isEncrypt = true;
   populate(validate())
+  $("#alphabet").keypress(function( e ) {
+    if(e.which === 32)
+        return false;
+  })
   $("#form input").on("input", function() {
     populate(validate())
   })
@@ -81,7 +85,7 @@ $(document).ready(function(){
           continue;
       }
       ind = idx[text[x]]
-      newind = (alpha * ind + beta)
+      newind = (alpha * ind + beta) % alphabet.length
       enc += alphabet[newind]
     }
     return enc
