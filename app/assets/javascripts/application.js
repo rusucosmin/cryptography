@@ -103,12 +103,38 @@ $(document).ready(function(){
       $("#result").val("")
     }
   }
+  function gcd(a, b) {
+    if (b == 0) {
+      return a
+    }
+    return gcd(b, a % b)
+  }
+  function unique(txt) {
+    obj = {}
+    for (i = 0; i < txt.length; ++ i) {
+      if (obj[txt[i]])
+        return false
+      obj[txt[i]] = 1;
+    }
+    return true
+  }
   function validate() {
     valid = true
     // check the alphabet
+    alpha = Number($("#alpha").val())
+    m = Number($("#alphabet").val().length)
     if ($("#alphabet").val().length == 0) {
       $("#alphabet").addClass("is-invalid")
+      $("#invalid-alphabet").text("Must be non empty.")
       valid = false;
+    } else if (gcd(alpha, m) != 1) {
+      $("#alphabet").addClass("is-invalid")
+      $("#invalid-alphabet").html("Alpha and length of the alphabet must be coprime.")
+      valid = false
+    } else if (!unique($("#alphabet").val())) {
+      $("#alphabet").addClass("is-invalid")
+      $("#invalid-alphabet").text("Alphabet contains duplicate.")
+      valid = false
     } else {
       $("#alphabet").removeClass("is-invalid")
     }
@@ -134,6 +160,6 @@ $(document).ready(function(){
     } else {
       $("#text").removeClass("is-invalid")
     }
-    return valid;
+  return valid;
   }
 })

@@ -21,7 +21,7 @@
  .wrapper {
      height: 300px;
      width: 300px;
-     margin: 50px auto;
+     margin: 10px auto;
  }
 
  .base {
@@ -57,7 +57,7 @@
  }
 
  .lock-circle-active {
-   transform: translateY(-40px);
+   transform: translateY(-25px);
  }
 
  .lock-circle-inside {
