@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/' => 'application#show'
   get '/encrypt' => 'crypto#encrypt'
   get '/decrypt' => 'crypto#decrypt'
+  get '*path' => redirect('/')
 end
