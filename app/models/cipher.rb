@@ -36,7 +36,7 @@ class Cipher
 
 private
   def alpha_and_alphabet_size_should_be_coprime
-    if alphabet.length.gcd(alpha.to_i) != 1
+    if @alphabet && @alpha && @alphabet.length.gcd(@alpha.to_i) != 1
       errors.add(:alpha, "Alpha and alphabet size should be coprime")
       errors.add(:alphabet, "Alpha and alphabet size should be coprime")
     end
