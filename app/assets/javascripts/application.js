@@ -20,9 +20,8 @@
 $(document).ready(function(){
   isEncrypt = true;
   populate(validate())
-  $("#alphabet").keypress(function( e ) {
-    if(e.which === 32)
-        return false;
+  $("#alphabet").keypress(function(e) {
+    return e.which === 32 || (e.which >= 97 && e.which <= 122)
   })
   $("#form input").on("input", function() {
     populate(validate())
@@ -38,7 +37,7 @@ $(document).ready(function(){
       $("#result-label").text("Encrypted")
     } else {
       $("#title").text("Affine cipher - Decrypt")
-      $("#text").val("ufyu up efdszqu")
+      $("#text").val("ufyuaupafodszqu")
       $("#text-label").text("Text to decrypt")
       $("#result-label").text("Decrypted")
     }
@@ -63,10 +62,6 @@ $(document).ready(function(){
       return ;
     }
     for (i = 0; i < text.length; ++ i) {
-      if (text[i] == " ") {
-        dec += " ";
-        continue;
-      }
       ind = idx[text[i]];
       newind = inv * (ind - beta + alphabet.length) % alphabet.length;
       dec += alphabet[newind];
@@ -80,10 +75,6 @@ $(document).ready(function(){
     }
     enc = ""
     for (x = 0; x < text.length; ++ x) {
-      if (text[x] == " ") {
-          enc += " ";
-          continue;
-      }
       ind = idx[text[x]]
       newind = (alpha * ind + beta) % alphabet.length
       enc += alphabet[newind]
