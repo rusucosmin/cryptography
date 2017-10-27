@@ -6,6 +6,10 @@ Public Key Cryptography course assignments
 Ruby version: 2.5.2
 Rails version: 5.1.4
 
+# Documentation
+## Laboratory 1
+- Assigned cipher: Affine cipher
+
 # Run locally
 
 In order to run this project:

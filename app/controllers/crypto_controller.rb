@@ -16,6 +16,12 @@ class CryptoController < ActionController::API
                     :encrypted => @cipher.encrypt }
   end
 
+
+#  api :GET, "/decrypt"
+#  param :alphabet, String, :desc => "The alphabet to be used when encrypting", :required => true
+#  param :alpha, Integer, :desc => "First element of the encrypting key", :required => true
+#  param :beta, Integer, :desc => "Second element of the encrypting key", :required => true
+#  param :text, String, :desc => "Text to be encrypted" , :required => true
   def decrypt
     render json: {  :alphabet => @cipher.alphabet,
                     :alpha => @cipher.alpha,
