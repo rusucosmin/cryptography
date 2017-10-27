@@ -18,18 +18,26 @@
 //= require_tree .
 
 $(document).ready(function(){
+  // variable to keep what action we need to perform (encrypt / decrypt)
   isEncrypt = true;
+  // initialize with default parameters
   populate(validate())
+  // don't let the user introduce other special characters
   $("#alphabet").keypress(function(e) {
     return e.which === 32 || (e.which >= 97 && e.which <= 122)
   })
+  // whenever a user action occurs, we validate the inputs
   $("#form input").on("input", function() {
     populate(validate())
   })
+  // toggle the encrypt / decrypt
   $("#locker").click(function() {
+    // enable animations
     $(".lock-box").toggleClass("lock-box-active")
     $(".lock-circle").toggleClass("lock-circle-active")
+    // flip the ecrypt variable
     isEncrypt = !isEncrypt
+    // populate with default text
     if (isEncrypt) {
       $("#title").text("Affine cipher - Encrypt")
       $("#text").val("text to encrypt")
@@ -41,22 +49,35 @@ $(document).ready(function(){
       $("#text-label").text("Text to decrypt")
       $("#result-label").text("Decrypted")
     }
+    // validate the inputs
     populate(validate())
   })
+  // method returns the modular inverse of alpha mod m
+  // alpha - the number to get the modular inverse
+  // m - we work modulo m
+  // method returns the modular inverse or -1 if there is no such number
   function getModularInverse(alpha, m) {
     for (inv = 0; inv < m; ++ inv) {
-      if ((alpha * inv) % m == 1)
-        return alpha
+      if ((alpha * inv) % m === 1) {
+        console.log("inv mod of " + alpha + " is " + inv)
+        //return alpha
+        return inv
+      }
     }
     return -1;
   }
+  // method decrypts the text with the affine cipher key (alpha, beta)
+  // operations are performed on the alphabet 'alphabet'
   function decrypt(alphabet, alpha, beta, text) {
     idx = {}
     for (x = 0; x < alphabet.length; ++ x) {
       idx[alphabet[x]] = x
     }
+    // ehb
     dec = ""
+    console.log("alpha = " + alpha)
     inv = getModularInverse(alpha, alphabet.length)
+    console.log("inv modular = " + inv)
     if (x == -1) {
       alert ("No modular inverse for alpha and length of alphabet")
       return ;
@@ -66,8 +87,10 @@ $(document).ready(function(){
       newind = inv * (ind - beta + alphabet.length) % alphabet.length;
       dec += alphabet[newind];
     }
-    return dec
+    return dec.toUpperCase()
   }
+  // method encrypts the text with the affine cipher key (alpha, beta)
+  // operations are performed on the alphabet 'alphabet'
   function encrypt(alphabet, alpha, beta, text) {
     idx = {}
     for (x = 0; x < alphabet.length; ++ x) {
@@ -79,8 +102,9 @@ $(document).ready(function(){
       newind = (alpha * ind + beta) % alphabet.length
       enc += alphabet[newind]
     }
-    return enc
+    return enc.toUpperCase()
   }
+  // auxiliary method to perform the encryption / decryption
   function populate(valid) {
     if (valid == true) {
       if (isEncrypt) {
@@ -98,12 +122,14 @@ $(document).ready(function(){
       $("#result").val("")
     }
   }
+  // method returns the greatest commond divisor of a and b
   function gcd(a, b) {
     if (b == 0) {
       return a
     }
     return gcd(b, a % b)
   }
+  // check if the text contains only unique letters
   function unique(txt) {
     obj = {}
     for (i = 0; i < txt.length; ++ i) {
@@ -113,6 +139,7 @@ $(document).ready(function(){
     }
     return true
   }
+  // method checks for the conditions
   function validate() {
     valid = true
     // check the alphabet
