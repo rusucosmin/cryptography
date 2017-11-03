@@ -2,7 +2,7 @@
 #include <fstream>
 #include "bigint.h"
 
-const int T = 3;
+const int T = 1;
 
 inline bigint gcd_subtract(bigint x, bigint y) {
   if (x.isZero()) {
@@ -59,7 +59,7 @@ inline bool isPrime(bigint &x) {
 
 inline bigint gcd_factorization(bigint x, bigint y) {
   bigint prime(2);
-  bigint _gcd(2);
+  bigint _gcd(1);
   while (prime * prime <= x && prime * prime <= y) {
     while (x % prime == 0 && y % prime == 0) {
       x /= prime;
@@ -75,7 +75,7 @@ inline bigint gcd_factorization(bigint x, bigint y) {
 }
 
 int main() {
-  ofstream _log("stats_factorization.txt");
+  ofstream _log("stats_.txt");
   for(int i = 0; i < T; ++ i) {
     cerr << "starting test " << i << '\n';
     auto start = std::chrono::high_resolution_clock::now();
@@ -85,10 +85,10 @@ int main() {
     bigint x, y;
     fin >> dcount >> x >> y;
     _log << dcount << ' ';
-    //bigint _gcd = gcd_division(x, y);
+    bigint _gcd = gcd_division(x, y);
     //bigint _gcd = gcd_subtract(x, y);
-    bigint _gcd = gcd_factorization(x, y);
-    //cerr << "gcd division = " << _gcd << '\n';
+    //bigint _gcd = gcd_factorization(x, y);
+    cerr << "gcd division = " << _gcd << '\n';
     //cerr << "gcd subtraction = " << gcd_subtract(x, y) << '\n';
     //cerr << "gcd factorization = " << gcd_factorization(x, y) << '\n';
     auto finish = std::chrono::high_resolution_clock::now();
