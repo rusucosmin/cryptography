@@ -55,11 +55,18 @@ inline void runTests() {
 }
 
 
-int main() {
-  runTests();
-  ifstream fin("input.in");
+int main(int argv, char * args[]) {
+//  runTests();
+  string filename = "input.in";
+  cerr << argv << ' ' << args[0] << '\n';
+  if(argv > 1) {
+    filename = args[1];
+  }
+  ifstream fin(filename);
+  cerr << filename << '\n';
   long long n;
   fin >> n;
+  cerr << n << '\n';
   for(auto it : factorize(n)) {
     cerr << it.first << ' ' << it.second << '\n';
   }

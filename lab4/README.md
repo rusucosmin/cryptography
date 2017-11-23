@@ -24,3 +24,7 @@ def factorize(n):
 Other approches precomputes all the primes in the interval [2, sqrt(n)], and the implementation
 would be faster so that you are not iterating to all numbers in the interval, but rather on only
 the number of divisors there. However, a precomputation is neccesary.
+
+##Pollard p algorithm
+The algorithm returns a non-obvious divisor of a number. It uses Floyd's idea of detecting cycles,
+also knonw as the rabbit & turtle problem.
