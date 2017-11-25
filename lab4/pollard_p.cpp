@@ -45,16 +45,23 @@ inline void runTests() {
 
 int main(int argv, char *args[]) {
 //  runTests();
+  clock_t t;
+  t = clock();
+
   long long  n = 4087;
   string filename = "input.in";
   if(argv > 1) {
     filename = args[1];
   }
   ifstream fin(filename);
-  cerr << filename << '\n';
   fin >> n;
-  cerr << n << '\n';
+  ofstream fout("pollard_p.out");
+  fout << n << '\n';
   long long prime = solve(n, [](long long x)->long long{return x*x+x+1;});
-  cerr << prime << ' ' << n / prime;
+  fout << prime << ' ' << n / prime << '\n';
+
+  t = clock() - t;
+  cout << "Pollard-p algorithm for factorizing " << n << " took me "  << t
+      << " cycles (" << static_cast<float> (t) / CLOCKS_PER_SEC << " seconds)\n";
   return 0;
 }

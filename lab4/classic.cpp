@@ -57,18 +57,28 @@ inline void runTests() {
 
 int main(int argv, char * args[]) {
 //  runTests();
+  clock_t t;
+  t = clock();
+
   string filename = "input.in";
-  cerr << argv << ' ' << args[0] << '\n';
+
   if(argv > 1) {
     filename = args[1];
   }
+
   ifstream fin(filename);
-  cerr << filename << '\n';
   long long n;
+
   fin >> n;
-  cerr << n << '\n';
+
+  ofstream fout("classic.out");
+  fout << n << '\n';
   for(auto it : factorize(n)) {
-    cerr << it.first << ' ' << it.second << '\n';
+    fout << it.first << ' ' << it.second << '\n';
   }
+
+  t = clock() - t;
+  cout << "Classic algorithm for factorizing " << n << " took me "  << t
+      << " cycles (" << static_cast<float> (t) / CLOCKS_PER_SEC << " seconds)\n";
   return 0;
 }
