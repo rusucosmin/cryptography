@@ -1,6 +1,6 @@
-#Lab4 - Factorizing
+# Lab4 - Factorizing
 
-##Classic algorithm
+## Classic algorithm
 The classic algorithm is pretty straight forward:
 - We take each possible divisor, and when we find one, we keep dividing that number
 with the same divisor while we can. We also only need to go only until `sqrt(n)`.
@@ -25,6 +25,6 @@ Other approches precomputes all the primes in the interval [2, sqrt(n)], and the
 would be faster so that you are not iterating to all numbers in the interval, but rather on only
 the number of divisors there. However, a precomputation is neccesary.
 
-##Pollard p algorithm
+## Pollard p algorithm
 The algorithm returns a non-obvious divisor of a number. It uses Floyd's idea of detecting cycles,
 also knonw as the rabbit & turtle problem.
