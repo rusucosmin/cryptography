@@ -58,6 +58,7 @@ int main(int argv, char *args[]) {
   ofstream fout("pollard_p.out");
   fout << n << '\n';
   long long prime = solve(n, [](long long x)->long long{return x*x+x+1;});
+  assert(n % prime == 0);
   fout << prime << ' ' << n / prime << '\n';
 
   t = clock() - t;
