@@ -61,7 +61,7 @@ int main(int argv, char *args[]) {
   fout << prime << ' ' << n / prime << '\n';
 
   t = clock() - t;
-  cout << "Pollard-p algorithm for factorizing " << n << " took me "  << t
-      << " cycles (" << static_cast<float> (t) / CLOCKS_PER_SEC << " seconds)\n";
+  cout << " | `" << n << "` | POLLARD RHO  | `" << t << "` | `"
+    << static_cast<float> (t) / CLOCKS_PER_SEC * 1000 << "` |\n";
   return 0;
 }

@@ -34,8 +34,9 @@ inline void solve(int n) {
   map<int, double> x;
   b[-1] = 1;
   b[0] = a[0] = int(sqrt(n));
+  cerr << a[0] << ' ' << sqrt(n) << '\n';
   x[0] = sqrt(n) - a[0];
-  cerr << 0 << ' ' << a[0] << ' ' << b[0] << ' ' << b[0] * b[0] - n << '\n';
+  cerr << 0 << ' ' << x[0] << ' ' << a[0] << ' ' << b[0] << ' ' << b[0] * b[0] - n << '\n';
   vector <int> v;
   v.push_back(b[0] * b[0] - n);
   for(int i = 1; i < 20; ++ i) {
@@ -53,7 +54,7 @@ inline void solve(int n) {
       aux = aux - n;
     }
     v.push_back(aux);
-    cerr << i << ' ' << a[i] << ' ' << b[i] << ' ' << aux << '\n';
+    cerr << i << ' ' << x[i] << ' ' << a[i] << ' ' << b[i] << ' ' << aux << '\n';
   }
   cerr << "Factorizing...\n";
   for(auto it : v) {

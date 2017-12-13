@@ -25,6 +25,31 @@ Other approches precomputes all the primes in the interval [2, sqrt(n)], and the
 would be faster so that you are not iterating to all numbers in the interval, but rather on only
 the number of divisors there. However, a precomputation is neccesary.
 
+| Number | Algorithm | Processor cycles | Time (milliseconds) |
+|--------|-----------|------------------|---------------------|
+| `48` | CLASSIC ALGORITHM  | `257` | `0.257` |
+| `48` | POLLARD RHO  | `125` | `0.125` |
+| `59290505918` | CLASSIC ALGORITHM  | `159` | `0.159` |
+| `59290505918` | POLLARD RHO  | `128` | `0.128` |
+| `270` | CLASSIC ALGORITHM  | `125` | `0.125` |
+| `270` | POLLARD RHO  | `135` | `0.135` |
+| `8266` | CLASSIC ALGORITHM  | `148` | `0.148` |
+| `8266` | POLLARD RHO  | `121` | `0.121` |
+| `38345` | CLASSIC ALGORITHM  | `128` | `0.128` |
+| `38345` | POLLARD RHO  | `137` | `0.137` |
+| `571445` | CLASSIC ALGORITHM  | `126` | `0.126` |
+| `571445` | POLLARD RHO  | `124` | `0.124` |
+| `8561193` | CLASSIC ALGORITHM  | `208` | `0.208` |
+| `8561193` | POLLARD RHO  | `121` | `0.121` |
+| `94786230` | CLASSIC ALGORITHM  | `127` | `0.127` |
+| `94786230` | POLLARD RHO  | `123` | `0.123` |
+| `328186067` | CLASSIC ALGORITHM  | `151` | `0.151` |
+| `328186067` | POLLARD RHO  | `129` | `0.129` |
+| `4836989149` | CLASSIC ALGORITHM  | `168` | `0.168` |
+| `4836989149` | POLLARD RHO  | `4005` | `4.005` |
+
+
+
 ## Pollard p algorithm
 The algorithm returns a non-obvious divisor of a number. It uses Floyd's idea of detecting cycles,
 also knonw as the rabbit & turtle problem.

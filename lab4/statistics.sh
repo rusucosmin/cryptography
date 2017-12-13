@@ -7,9 +7,7 @@ echo "Generating test (this may take a while)"
 python gen.py
 
 for i in `ls tests`; do
-  echo "running test on classic "$i
   ./classic.o 'tests/'$i
-  echo "running test on pollard "$i
   ./pollard_p.o 'tests/'$i
 done
 

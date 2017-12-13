@@ -78,7 +78,7 @@ int main(int argv, char * args[]) {
   }
 
   t = clock() - t;
-  cout << "Classic algorithm for factorizing " << n << " took me "  << t
-      << " cycles (" << static_cast<float> (t) / CLOCKS_PER_SEC << " seconds)\n";
+  cout << " | `" << n << "` | CLASSIC ALGORITHM  | `" << t << "` | `"
+    << static_cast<float> (t) / CLOCKS_PER_SEC * 1000 << "` |\n";
   return 0;
 }
