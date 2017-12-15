@@ -12,21 +12,35 @@ inline long long gcd(long long a, long long b) {
   return gcd(b, a % b);
 }
 
+inline long long mod(long long a) {
+  return max(a, -a);
+}
+
 long long solve(long long n, function<long long(long long)>f) {
-  long long x_i = 2;
-  long long x_2i = f(f(2));
-  for(int i = 0; ; ++ i) {
-    x_i = f(x_i);
-    x_2i = f(f(x_2i));
-    long long d = gcd(x_2i - x_i, n);
-    if (d > 1 && d < n) {
-      return d;
-    } else  if(d == n) {
-      cerr << "Failure, please try again other function or start point.";
-      return -1;
-    }
+   /* x ← 2; y ← 2; d ← 1
+    while d = 1:
+        x ← g(x)
+        y ← g(g(y))
+        d ← gcd(|x - y|, n)
+    if d = n:
+        return failure
+    else:
+        return d
+        */
+  long long x = 2;
+  long long y = 2;
+  long long d = 1;
+  for(int i = 0; d == 1 ; ++ i) {
+    x = f(x);
+    y = f(f(y));
+    d = gcd(mod(x - y), n);
   }
-  assert(false); ///should not come this far
+  if(d == n) {
+    cerr << "Error, it's not working!\n";
+    return -1;
+  } else {
+    return d;
+  }
 }
 
 inline void runTests() {
@@ -57,7 +71,7 @@ int main(int argv, char *args[]) {
   fin >> n;
   ofstream fout("pollard_p.out");
   fout << n << '\n';
-  long long prime = solve(n, [](long long x)->long long{return x*x+x+1;});
+  long long prime = solve(n, [](long long x)->long long{return x*x+2*x+1;});
   assert(n % prime == 0);
   fout << prime << ' ' << n / prime << '\n';
 

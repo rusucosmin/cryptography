@@ -53,3 +53,17 @@ the number of divisors there. However, a precomputation is neccesary.
 ## Pollard p algorithm
 The algorithm returns a non-obvious divisor of a number. It uses Floyd's idea of detecting cycles,
 also knonw as the rabbit & turtle problem.
+
+### Pseudocode
+
+```
+    x ← 2; y ← 2; d ← 1
+    while d = 1:
+        x ← g(x)
+        y ← g(g(y))
+        d ← gcd(|x - y|, n)
+    if d = n:
+        return failure
+    else:
+        return d
+```
